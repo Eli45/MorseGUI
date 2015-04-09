@@ -10,10 +10,15 @@ object MorseFunc
 	 				* s:String	{Phrase to be translated to or from Morse.}
 	 			* If Translate to Morse mode is enabled, inserted string will be translated to Morse.
 	 			* Else code will attempt to be translated from Morse to English.
+	 		* USE_2:
+	 			* PARAMETERS:
+	 				* s:String {Phrase to be translated to or from Morse.}
+	 				* mode:String {Translation mode, either --mte or --etm.}
 	 		* RETURNS:
 	 			* A string of either English or Morse characters.
 	 		* EXCEPTIONS:
 	 			* If given string contains unsupported characters an IllegalArgumentException is thrown.
+	 			* USE_2: If given mode is not recognized an IllegalArgumentException is thrown.
 	 	
 	 	* switchTranslationMode
 	 		* USE:
@@ -135,6 +140,17 @@ object MorseFunc
 			
 			return this.transPhraseToEnglish(s);
 
+		}
+		
+		def translate(s: String, mode: String):String =
+		{
+			mode match
+			{
+				case "--etm" => { return this.transPhraseToMorse(s);   };
+				case "--mte" => { return this.transPhraseToEnglish(s); };
+			}
+			
+			throw new IllegalArgumentException("Mode [" + mode + "] is not a recognized mode.");
 		}
 		
 		def switchTranslationMode() =
