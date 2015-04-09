@@ -1,5 +1,6 @@
 MorseFunc.scala
 line 106->remove if(WordsInLines.equals("\n")) println("\\n Found");
+line 38->remove unused variable inPhrase.
 
 MainWindow.scala
 line17,18->Modify class to take a boolean to enable top.visible from the start of the instance or not.
