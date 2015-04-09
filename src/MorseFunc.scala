@@ -1,6 +1,6 @@
 object MorseFunc	
 {
-	/*
+	/**
 	 * MorseReader class used to interpret Morse code or translate to Morse code.
 	 * 
 	 * METHODS:
@@ -19,6 +19,13 @@ object MorseFunc
 	 		* USE:
 	 			* Switching to and from Translate To Morse mode. 
 	 			* Will switch from true to false or false to true depending on current setting.
+
+		* getTranslationMode
+			* USE:
+				* Returns what the current translation mode is.
+			* RETURNS:
+				* True if Translating to Morse
+				* False otherwise.
 	 */
 	class MorseReader()
 	{
@@ -46,7 +53,7 @@ object MorseFunc
 				{
 					if (this.EnglishToMorse.contains(charStrings(j).toString().toUpperCase()))	
 					{
-						charStrings(j) = this.EnglishToMorse.apply(charStrings(j).toUpperCase());;
+						charStrings(j) = this.EnglishToMorse.apply(charStrings(j).toUpperCase());
 					}
 					else	
 					{
@@ -55,7 +62,7 @@ object MorseFunc
 					}
 					
 					//Check if a letter follows, in which case there should be a space appended to prepare for it.
-					if (j != charStrings.length - 1)	
+					if (j != charStrings.length - 1 && charStrings(j) != "\n")	
 					{
 						outWords += (charStrings(j) + " ");
 					}
@@ -86,27 +93,33 @@ object MorseFunc
 		private def transPhraseToEnglish(phrase:String):String =
 		{
 			var inPhrase 	                = phrase;
-			var in			                = phrase.split(' ');
+			var inLines 					= phrase.split("\n").map(_.trim);
       
 			var invalidChars:Array[String]  = Array();
-			var shouldThrow:Boolean         = false;
+			var shouldThrow :Boolean        = false;
       
 			//Go through each letter and replace it with the correct Morse equivalent.
-			for (i <- 0 to in.length - 1)	{
-				if (this.MorseToEnglish.contains(in(i)))	
+			for (i <- 0 to inLines.length - 1)	{
+				var WordsInLine = inLines(i).split(' ');
+				for (j <- 0 to WordsInLine.length - 1)
 				{
-					in(i) = this.MorseToEnglish.apply(in(i));
+					if (WordsInLine.equals("\n")) println("\\n Found");
+					if (this.MorseToEnglish.contains(WordsInLine(j)))	
+					{
+						WordsInLine(j) = this.MorseToEnglish.apply(WordsInLine(j));
+					}
+					else
+					{
+						invalidChars = invalidChars :+ WordsInLine(j);
+						shouldThrow  = true;
+					}
 				}
-				else	
-				{
-					invalidChars = invalidChars :+ in(i);
-					shouldThrow  = true;
-				}
+				inLines(i) = GeneralFunc.ArrayStringToString(WordsInLine);
 			}
 		  
 			if (!shouldThrow)
 			{
-				return GeneralFunc.ArrayStringToString(in);
+				return GeneralFunc.ArrayStringToStringInterpolateNewLines(inLines);
 			}
       
 			throw new IllegalArgumentException("ERROR: Unknown symbols[" + GeneralFunc.ArrayStringToString(invalidChars, true) + "]");
@@ -114,8 +127,7 @@ object MorseFunc
 		}
 		
 		def translate(s: String):String =
-		{
-			
+		{		
 			if (this.TransToMorse)
 			{
 				return this.transPhraseToMorse(s);
@@ -128,6 +140,11 @@ object MorseFunc
 		def switchTranslationMode() =
 		{
 			this.TransToMorse = !this.TransToMorse;
+		}
+		
+		def getTranslationMode():Boolean =
+		{
+			return this.TransToMorse;
 		}
 	}
 	

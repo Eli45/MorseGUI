@@ -17,5 +17,4 @@ object program
 		var myUI = new MainWindow(new CustomUI());
 		myUI.top.visible = true;		
 	}
-	
 }

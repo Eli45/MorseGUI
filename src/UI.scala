@@ -23,13 +23,42 @@ object UI
 		}
 	}
 	
-	//CustomUI class containing all UI components used in our GUI and their reaction events.
+	/**
+	 * USE:
+	 	* CustomUI class which will contain all GUI elements and reactions for our main frame.
+	 * METHODS:
+	 	* PRIVATE:
+	 		* tryTranslate
+	 			* USE:
+	 				* Attempts to translate the string provided in txtInput.
+	 				* If there is a failure it returns None and changes lblError to inform the user.
+	 			* RETURNS:
+	 				* Either correctly translated text or None to signify an error.
+	 */
 	class CustomUI()
 	extends MainFrame
 	{	
 		private var MorseTranslator = new MorseReader();
 		
-		private var lblError = new Label("");
+		private var lblError 		= new Label("");
+
+		private def tryTranslate():Any =
+		{
+			lblError.text = "";
+			try 
+			{
+				return MorseTranslator.translate(txtInput.text);
+			}
+			catch
+			{
+				case e:Exception => 
+				{
+					lblError.text = e.getMessage();
+					return None;
+				}
+			}
+		};
+		
 		
 		private var btnSwitch = new Button("Switch to Morse->English")
 		{
@@ -39,7 +68,9 @@ object UI
 			{
 				case scala.swing.event.ButtonClicked(_) =>
 				{
-					if (this.text.toLowerCase().equals("switch to morse->english"))
+					MorseTranslator.switchTranslationMode();
+					
+					if (!MorseTranslator.getTranslationMode())	//Mode != Morse To English.
 					{
 						this.text = "Switch to English->Morse";
 					}
@@ -47,26 +78,45 @@ object UI
 					{
 						this.text = "Switch to Morse->English";
 					}
-          
-					MorseTranslator.switchTranslationMode();
+					
 				}
 			};
 
 		};
 		
-		private var txtOutput = new TextField("", 10)
+		private var txtOutput = new TextArea("", 4, 20)
 		{
 			this.editable = false;
-			this.tooltip = "Translated text appears here.";
+			this.tooltip  = "Translated text appears here.";
 			//this.preferredSize = new Dimension(100, 100);
 		};
 		
-		private var txtInput = new TextField("", 10)
+		private var txtInput = new TextArea("", 4, 20)
 		{
 			this.tooltip   = "What you want to translate.";
 			this.enabled   = true;
 			this.focusable = true;
 			//this.preferredSize = new Dimension(100, 100);
+			
+			//TODO: Figure out a way to only trigger this if SHIFT and ENTER are pressed at (near) the same time.   
+			//Until the, I have disabled the enter to confirm functionality.
+			/*
+			listenTo(keys);
+            reactions += 
+            {
+                case scala.swing.event.KeyPressed(_, scala.swing.event.Key.Enter, _, _) =>
+                {
+                	txtOutput.text = "";
+					
+					var result  = tryTranslate();
+					if (result != None)
+					{
+						txtOutput.text = result.toString();
+					}
+                }
+            };
+            */
+            
 		};
 		
 		private var btnConfirm = new Button("Confirm")
@@ -75,18 +125,13 @@ object UI
 			this.reactions += 
 			{
 				case scala.swing.event.ButtonClicked(_) =>
-				{			
-					lblError.text = "";
-					try 
+				{
+					txtOutput.text = "";
+					
+					var result  = tryTranslate();
+					if (result != None)
 					{
-						txtOutput.text = MorseTranslator.translate(txtInput.text);
-					}
-					catch
-					{
-						case e:Exception => 
-						{
-							lblError.text = e.getMessage();
-						}
+						txtOutput.text = result.toString();
 					}
 				}
 			};
@@ -103,15 +148,14 @@ object UI
 			}
 		};
 			
-		this.title = "Eli Morse Translator";
+		this.title         = "Eli Morse Translator";
 		this.preferredSize = new Dimension(600, 300);
-		this.contents = new BoxPanel(Orientation.Vertical)
-		{
+		this.contents      = new BoxPanel(Orientation.Vertical)
+		{	
 			this.contents += new FlowPanel(
 				new Label("INPUT:"),
 				txtInput
 			);
-			
 			
 			this.contents += new FlowPanel(
 				btnSwitch,
@@ -129,28 +173,8 @@ object UI
       
 			this.contents += new FlowPanel(
 				btnCopyToClipboard  
-			);
-			
+			);	
 		};
-		
-		//TODO: Doesn't work yet, not sure what's wrong.
-		private val keylistener = new java.awt.event.KeyListener()
-		{
-			//This method never seems to be called even when pressing a key.
-			override def keyPressed(e:java.awt.event.KeyEvent)
-			{
-				if (txtInput.hasFocus && (e.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER))
-				{
-					scala.swing.event.ButtonClicked(btnSwitch);
-				}
-			};
-			
-			override def keyReleased(e:java.awt.event.KeyEvent){};
-			override def keyTyped(e:java.awt.event.KeyEvent){};
-			
-		};
-		//Possibly something to do with this not adding it to my UI correctly.
-		this.peer.addKeyListener(this.keylistener);
 		
 	}
 	

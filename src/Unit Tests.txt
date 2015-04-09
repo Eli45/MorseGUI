@@ -1,10 +1,27 @@
-rekt-9									->		.-. . -.- - -....- ----.
+[SECTION]
+ENGLISH TO MORSE:
+    rekt-9									->		.-. . -.- - -....- ----.
+    
+    *(#mcx 3)Ps; ;. 						->		ERROR: Unknown symbols:[* # ; ;]
+    
+    hey_haha@gmail.com						->	    ERROR: Unknown symbols:[@]
+    
+    this worked right?						->		- .... .. ... / .-- --- .-. -.- . -.. / .-. .. --. .... - ..--..
+    
+    Eli Furland								->		. .-.. .. / ..-. ..- .-. .-.. .- -. -..
+    
+    Multiple Lines Should Work!                     -- ..- .-.. - .. .--. .-.. . / .-.. .. -. . ... / ... .... --- ..- .-.. -.. / .-- --- .-. -.- ---. 
+    Right?                                  ->      .-. .. --. .... - ..--.. 
+    They Do Right?                                  - .... . -.-- / -.. --- / .-. .. --. .... - ..--..
+    
 
-*(#mcx 3)Ps; ;. 						->		ERROR: Unknown symbols:[* # ; ;]
+[SECTION]
+MORSE TO ENGLISH:
+    -- --- .-. ... . / - --- / . -. --. .-.. .. ... .... / .. ... / .- .-.. ... --- / --. --- --- -..
+                                            ->      MORSE TO ENGLISH IS ALSO GOOD
 
-hey_haha@gmail.com						->	    ERROR: Unknown symbols:[@]
-
-this worked right?						->		- .... .. ... / .-- --- .-. -.- . -.. / .-. .. --. .... - ..--..
-
-Eli Furland								->		. .-.. .. / ..-. ..- .-. .-.. .- -. -..
-
+    -- ..- .-.. - .. .-.. .. -. . ...               MULTILINES
+    .- .-. .                                ->      ARE
+    -.-. --- --- .-..                               COOL
+    
+    asdfasdfasfd blah                       ->      ERROR: Unknown symbols[asdfasdfasdf blah]

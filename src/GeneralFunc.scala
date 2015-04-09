@@ -1,6 +1,6 @@
 object GeneralFunc
 {
-	/*
+	/**
 	 * USE:
 	 	* Translates a char array to an array of 1 length strings.
 	 * RETURNS:
@@ -19,7 +19,7 @@ object GeneralFunc
 	}
 	
 	
-	/*
+	/**
 	 * USE:
 	 	* Function will take an array of strings and create a singular string by adding each element to a string.
 	 	* This is used when we are forming a word from our array of individual string characters.
@@ -49,8 +49,26 @@ object GeneralFunc
 		return RET;
 	}
 	
+	/**
+	 * USE:
+	 	* Function serves the same purpose as ArrayStringToString except we use this on Morse->English.
+	 	* Because of we remove the \n's after each line when the line gets trimmed.
+	 * RETURNS:
+	 	* A string with each array element interpolated with newlines after each element.
+	 */
+	def ArrayStringToStringInterpolateNewLines(stringArr:Array[String]):String =
+	{
+		var RET:String = "";
+		
+		for (i <- 0 to stringArr.length - 1)
+		{
+			RET += stringArr(i) + "\n";
+		}
+		
+		return RET;
+	}
 	
-	/*
+	/**
 	 * USE:
 	 	* Copies selected string to the users clipboard.
 	 */
