@@ -1,0 +1,10 @@
+rekt-9									->		.-. . -.- - -....- ----.
+
+*(#mcx 3)Ps; ;. 						->		ERROR: Unknown symbols:[* # ; ;]
+
+hey_haha@gmail.com						->	    ERROR: Unknown symbols:[@]
+
+this worked right?						->		- .... .. ... / .-- --- .-. -.- . -.. / .-. .. --. .... - ..--..
+
+Eli Furland								->		. .-.. .. / ..-. ..- .-. .-.. .- -. -..
+
