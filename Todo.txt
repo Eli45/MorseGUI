@@ -1,0 +1,4 @@
+MorseFunc.scala
+line 106
+
+remove if(WordsInLines.equals("\n")) println("\\n Found");
