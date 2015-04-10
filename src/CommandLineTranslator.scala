@@ -1,3 +1,4 @@
+//TODO: add error checking to translations.
 object CommandLineTranslator	
 {
 
@@ -93,7 +94,7 @@ object CommandLineTranslator
 				{
 					case "help" =>
 					{
-						println("Do you think you're funny?");
+						println("911 has been called and the authorities have been notified. Help is on the way.");
 					};
 					case "mte" =>
 					{

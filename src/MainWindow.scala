@@ -28,7 +28,7 @@ object program
 			}
 			else
 			{
-				throw new IllegalArgumentException(args(0) + " is not a recognized command line argument. Try --cmd");
+				throw new IllegalArgumentException(args(0) + " is not a recognized command line argument. Try '--cmd'");
 			}
 		}
 		else
