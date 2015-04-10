@@ -99,7 +99,7 @@ object UI
 			//this.preferredSize = new Dimension(100, 100);
 			
 			//TODO: Figure out a way to only trigger this if SHIFT and ENTER are pressed at (near) the same time.   
-			//Until the, I have disabled the enter to confirm functionality.
+			//Until this, I have disabled the enter to confirm functionality.
 			/*
 			listenTo(keys);
             reactions += 
