@@ -1,6 +1,8 @@
 object MorseLanguageDetails
 {
 	
+	val newLine = java.lang.System.getProperty("line.separator");
+	val newLines = Array("\n", "\r\n", newLine);
 	val EnglishToMorse = Map(
 		"A" -> ".-",		"M" -> "--",
 		"B" -> "-...",		"N" -> "-.",
@@ -27,8 +29,9 @@ object MorseLanguageDetails
 		";" -> "-.-.-",		"/" -> "-..-.",
 		"-" -> "-....-",	"'" -> ".----.",
 		"(" -> "-.--.",		"_" -> "..__._",	//Underscore
-		")" -> "-.--.-",	"\n"-> "\n",
-		"!" -> "---."
+		")" -> "-.--.-",	newLine -> newLine,
+		"\n"-> "\n",		"\r\n" 	-> "\r\n",
+		"!" -> "---.",		""  	-> ""
 	);
 	
 	val MorseToEnglish = Map(
@@ -56,9 +59,12 @@ object MorseLanguageDetails
 		"..--.." -> "?",	"---..." -> ":",
 		"-.-.-"  -> ";",	"-..-."  -> "/",
 		"-....-" -> "-",	".----." -> "'",
-		"-.--." -> "(",		"..__._" -> "_",	//Underscore
+		"-.--."  -> "(",	"..__._" -> "_",	//Underscore
 		"-.--.-" -> ")",	"/"		 -> " ",
-		"\n"	 -> "\n",	"---."	 -> "!"
+		newLine	 -> newLine,
+		"\n" 	 -> "\n",	"\r\n" 	 -> "\r\n",
+		"---."	 -> "!",	""		 -> ""
 	);
+	
 	
 }

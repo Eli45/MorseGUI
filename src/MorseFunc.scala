@@ -41,7 +41,7 @@ object MorseFunc
 		private def transPhraseToMorse(phrase:String):String =
 		{
 			var inPhrase	:String				= phrase;
-			var inWords 	:List[String]		= phrase.split(' ').toList;
+			var inWords 	:List[String]		= phrase.replace(MorseLanguageDetails.newLine, "\n").split(' ').toList;
 			var outWords	:String				= "";
 			
 			var invalidChars:Array[String]		= Array();
@@ -54,20 +54,20 @@ object MorseFunc
 				
 				
 				//Loop scans each letter in the word.
-				for(j <- 0 to charStrings.length - 1)	
+				for(j <- 0 to charStrings.length - 1)
 				{
 					if (this.EnglishToMorse.contains(charStrings(j).toString().toUpperCase()))	
 					{
 						charStrings(j) = this.EnglishToMorse.apply(charStrings(j).toUpperCase());
 					}
-					else	
+					else
 					{
 						invalidChars = invalidChars :+ charStrings(j);
 						shouldThrow  = true;
 					}
 					
 					//Check if a letter follows, in which case there should be a space appended to prepare for it.
-					if (j != charStrings.length - 1 && charStrings(j) != "\n")	
+					if (j != charStrings.length - 1 && !MorseLanguageDetails.newLines.contains(charStrings(j)))	
 					{
 						outWords += (charStrings(j) + " ");
 					}
@@ -90,7 +90,7 @@ object MorseFunc
 			{
 				return outWords;
 			}
-      
+			
 			throw new IllegalArgumentException("ERROR: Unknown symbols[" + GeneralFunc.ArrayStringToString(invalidChars, true) + "]");
       
 		}
@@ -98,7 +98,7 @@ object MorseFunc
 		private def transPhraseToEnglish(phrase:String):String =
 		{
 			var inPhrase 	                = phrase;
-			var inLines 					= phrase.split("\n").map(_.trim);
+			var inLines 					= phrase.replace(MorseLanguageDetails.newLine, "\n").split("\n").map(_.trim());
       
 			var invalidChars:Array[String]  = Array();
 			var shouldThrow :Boolean        = false;
@@ -108,7 +108,6 @@ object MorseFunc
 				var WordsInLine = inLines(i).split(' ');
 				for (j <- 0 to WordsInLine.length - 1)
 				{
-					if (WordsInLine.equals("\n")) println("\\n Found");
 					if (this.MorseToEnglish.contains(WordsInLine(j)))	
 					{
 						WordsInLine(j) = this.MorseToEnglish.apply(WordsInLine(j));
@@ -121,10 +120,10 @@ object MorseFunc
 				}
 				inLines(i) = GeneralFunc.ArrayStringToString(WordsInLine);
 			}
-		  
+			
 			if (!shouldThrow)
 			{
-				return GeneralFunc.ArrayStringToStringInterpolateNewLines(inLines);
+				return GeneralFunc.ArrayStringToStringInterpolateNewLines(inLines.map(_.trim()));
 			}
       
 			throw new IllegalArgumentException("ERROR: Unknown symbols[" + GeneralFunc.ArrayStringToString(invalidChars, true) + "]");
