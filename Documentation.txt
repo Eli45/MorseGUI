@@ -1,0 +1,36 @@
+  _    _  _____ ______ _____                                                           
+ | |  | |/ ____|  ____|  __ \                                                          
+ | |  | | (___ | |__  | |__) |                                                         
+ | |  | |\___ \|  __| |  _  /                                                          
+ | |__| |____) | |____| | \ \                                                          
+  \____/|_____/|______|_|  \_\__  __ ______ _   _ _______    _______ _____ ____  _   _ 
+ |  __ \ / __ \ / ____| |  | |  \/  |  ____| \ | |__   __|/\|__   __|_   _/ __ \| \ | |
+ | |  | | |  | | |    | |  | | \  / | |__  |  \| |  | |  /  \  | |    | || |  | |  \| |
+ | |  | | |  | | |    | |  | | |\/| |  __| | . ` |  | | / /\ \ | |    | || |  | | . ` |
+ | |__| | |__| | |____| |__| | |  | | |____| |\  |  | |/ ____ \| |   _| || |__| | |\  |
+ |_____/ \____/ \_____|\____/|_|  |_|______|_| \_|  |_/_/    \_\_|  |_____\____/|_| \_|
+                                                                                       
+
+Idiots Guide to Getting Started:
+    1) Put text in the 'INPUT' text field located in the upper half of the application.
+    2) Press the 'CONFIRM' button.
+    3) View pretty contents in 'OUTPUT' text field located in the lower half of the application.
+    4) View the 'Full Explanation of Features' section for a better explanation of all possible features.
+
+
+Full Explanation of Features:
+    Place text you wish to translate in the 'INPUT' text field.
+    After inputting text you wish to translate, press the 'CONFIRM' button to translate the text.
+    The newly translated text will appear in the 'OUTPUT' text field.
+    Any errors encountered during this translation process will appear at the bottom half of the application and will start with 'ERROR:'.
+    Some such errors include:
+        Attempting to copy from the 'OUTPUT' field when no text is present.
+        Entering unsupported characters into the 'INPUT' field (see SupportedCharacters.txt)
+
+    Pressing the 'SWITCH TRANSLATION MODE' button will switch from translation English->Morse to Morse->English and vice versa.
+    Pressing the 'COPY TO CLIPBOARD' button will copy any contents in Output to your clipboard for easy copy pasting.
+
+    Exiting the program follows your standard operating system procedures eg: pressing the exit button in the top right on a Windows machine.
+
+    ADVANCED:
+        Providing the program with the command line args '--cmd' will start the program in CLI form, no GUI will be launched.
