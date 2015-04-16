@@ -41,6 +41,9 @@ object UI
         private var MorseTranslator = new MorseReader();
         
         private var lblError        = new Label("");
+        
+        private val TEXT_FIELD_ROW    = 7;
+        private val TEXT_FIELD_COLUMN = 20;
 
         private def tryTranslate():Any =
         {
@@ -59,10 +62,13 @@ object UI
             }
         };
         
-        
-        private var btnSwitch = new Button("Switch to Morse->English")
+        private var lblSwitch = new Label("Mode: English->Morse")
         {
-            this.tooltip = "Switch language you wish to translate to and from.";
+        };
+        
+        private var btnSwitch = new Button("Switch translation mode")
+        {
+            this.tooltip = "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
             
             this.reactions += 
             {
@@ -70,13 +76,15 @@ object UI
                 {
                     MorseTranslator.switchTranslationMode();
                     
-                    if (!MorseTranslator.getTranslationMode())  //Mode != Morse To English.
+                    if (MorseTranslator.getTranslationMode())  //Mode == English to Morse
                     {
-                        this.text = "Switch to English->Morse";
+                    	this.tooltip 	= "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
+                    	lblSwitch.text 	= "Mode: English->Morse";
                     }
                     else
                     {
-                        this.text = "Switch to Morse->English";
+                    	this.tooltip 	= "Switch language you wish to translate to and from.\nCurrent mode: Morse->English";
+                    	lblSwitch.text 	= "Mode: Morse->English";
                     }
                     
                 }
@@ -84,14 +92,14 @@ object UI
 
         };
         
-        private var txtOutput = new TextArea("", 4, 20)
+        private var txtOutput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
         {
             this.editable = false;
             this.tooltip  = "Translated text appears here.";
             //this.preferredSize = new Dimension(100, 100);
         };
         
-        private var txtInput = new TextArea("", 4, 20)
+        private var txtInput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
         {
             this.tooltip   = "What you want to translate.";
             this.enabled   = true;
@@ -143,29 +151,44 @@ object UI
             this.reactions +=  {
                 case scala.swing.event.ButtonClicked(_) =>
                 {
-                    GeneralFunc.copyToClipboard(txtOutput.text);
+                    try
+                    {
+                    	GeneralFunc.copyToClipboard(txtOutput.text);
+                    }
+                    catch
+                    {
+                        case e:Exception =>
+                        {
+                            throw new Exception("Something very bad has occured. Please report this on the github repository. Exception details follow: " + e.getMessage());
+                        }
+                    }
                 }
             }
         };
             
         this.title         = "Eli Morse Translator";
-        this.preferredSize = new Dimension(600, 300);
+        this.preferredSize = new Dimension(750, 500);
         this.contents      = new BoxPanel(Orientation.Vertical)
         {   
+            
+            this.contents += new FlowPanel(new Label("<HTML><U>INPUT</U></HTML>"));
             this.contents += new FlowPanel(
-                new Label("INPUT:"),
                 txtInput
             );
             
             this.contents += new FlowPanel(
-                btnSwitch,
-                btnConfirm
+            	lblSwitch
             );
             
             this.contents += new FlowPanel(
-                new Label("OUTPUT:"),
-                txtOutput
+            	btnSwitch,
+            	btnConfirm
             );
+            
+            this.contents += new FlowPanel(new Label("<HTML><U>OUTPUT</U></HTML>"))
+            this.contents += new FlowPanel(
+                txtOutput
+            );       
             
             this.contents += new FlowPanel(
                 lblError
@@ -174,6 +197,7 @@ object UI
             this.contents += new FlowPanel(
                 btnCopyToClipboard  
             );  
+            
         };
         
     }

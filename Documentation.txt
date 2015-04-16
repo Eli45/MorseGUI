@@ -34,3 +34,5 @@ Full Explanation of Features:
 
     ADVANCED:
         Providing the program with the command line args '--cmd' will start the program in CLI form, no GUI will be launched.
+        Do note that the CLI interface is not checked for exceptions meaning that if an IllegalArgumentException is thrown
+        due to invalid characters, your program will crash and burn.

@@ -53,7 +53,7 @@ object CommandLineTranslator
         sys.exit(0);
     }
     
-    def ListenToInputs()
+    def ListenToInputs() =
     {
         var cont = true;
         val commands:Array[String] = Array(
@@ -129,7 +129,7 @@ object CommandLineTranslator
         }
     }
     
-    def printCommands()
+    def printCommands() =
     {
         println("1: help");
         println("2: mte");

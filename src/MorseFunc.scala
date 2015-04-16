@@ -104,7 +104,8 @@ object MorseFunc
             var shouldThrow :Boolean        = false;
       
             //Go through each letter and replace it with the correct Morse equivalent.
-            for (i <- 0 to inLines.length - 1)  {
+            for (i <- 0 to inLines.length - 1)
+            {
                 var WordsInLine = inLines(i).split(' ');
                 for (j <- 0 to WordsInLine.length - 1)
                 {

@@ -1,4 +1,1 @@
-change button 'Switch from x->y' to say 'SWITCH TRANSLATION MODE'
-add a status indicator to the left saying which mode it is currently on.
-
-check to make sure that output contents is not empty when copying to clipboard.
+add shift+enter keypress functionality to confirm translation.
