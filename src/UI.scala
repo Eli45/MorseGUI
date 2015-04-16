@@ -62,9 +62,7 @@ object UI
             }
         };
         
-        private var lblSwitch = new Label("Mode: English->Morse")
-        {
-        };
+        private var lblSwitch = new Label("Mode: English->Morse");
         
         private var btnSwitch = new Button("Switch translation mode")
         {
