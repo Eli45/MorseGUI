@@ -17,7 +17,7 @@ object program
         * --cmd
             * Starts program in command prompt mode instead of GUI mode.
      */
-    def main(args: Array[String])
+    def main(args: Array[String]):Unit = 
     {
         if (args.length > 0)
         {

@@ -1,0 +1,1 @@
+@scala -cp %~dp0\bin\ MainWindow
