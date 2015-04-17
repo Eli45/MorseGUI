@@ -24,7 +24,6 @@ Full Explanation of Features:
     The newly translated text will appear in the 'OUTPUT' text field.
     Any errors encountered during this translation process will appear at the bottom half of the application and will start with 'ERROR:'.
     Some such errors include:
-        Attempting to copy from the 'OUTPUT' field when no text is present.
         Entering unsupported characters into the 'INPUT' field (see SupportedCharacters.txt)
 
     Pressing the 'SWITCH TRANSLATION MODE' button will switch from translation English->Morse to Morse->English and vice versa.
