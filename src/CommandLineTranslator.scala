@@ -1,11 +1,6 @@
 //TODO: add error checking to translations.
 object CommandLineTranslator    
 {
-
-    def doNothing() =
-    {
-        
-    }
     
     def help() =
     {
