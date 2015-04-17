@@ -1,1 +1,2 @@
-add shift+enter keypress functionality to confirm translation.
+Make pretty???
+I guess that's it?

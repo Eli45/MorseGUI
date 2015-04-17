@@ -1,4 +1,4 @@
-import scala.swing._, MorseFunc._;
+import scala.swing._, MorseFunc._, UIKeyListener._;
 
 object UI
 {
@@ -33,19 +33,20 @@ object UI
                     * Attempts to translate the string provided in txtInput.
                     * If there is a failure it returns None and changes lblError to inform the user.
                 * RETURNS:
-                    * Either correctly translated text or None to signify an error.
+                    * Either correctly translated text as a String or None to signify an error.
      */
     class CustomUI()
     extends MainFrame
     {   
-        private var MorseTranslator = new MorseReader();
-        
-        private var lblError        = new Label("");
-        
-        private val TEXT_FIELD_ROW    = 7;
-        private val TEXT_FIELD_COLUMN = 20;
+        private var MorseTranslator     = new MorseReader();
+        private var KeyListener         = new CustomKeyListener();
 
-        private def tryTranslate():Any =
+        private var lblError            = new Label("");
+        
+        private val TEXT_FIELD_ROW      = 7;
+        private val TEXT_FIELD_COLUMN   = 20;
+
+        private def tryTranslate():Any  =
         {
             lblError.text = "";
             try 
@@ -92,42 +93,55 @@ object UI
         
         private var txtOutput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
         {
-            this.editable = false;
-            this.tooltip  = "Translated text appears here.";
+            this.editable   = false;
+            this.tooltip    = "Translated text appears here.";
             //this.preferredSize = new Dimension(100, 100);
         };
         
         private var txtInput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
         {
-            this.tooltip   = "What you want to translate.";
-            this.enabled   = true;
-            this.focusable = true;
-            //this.preferredSize = new Dimension(100, 100);
+            this.tooltip    = "What you want to translate.";
+            this.enabled    = true;
+            this.focusable  = true;
+            this.requestFocus();
             
-            //TODO: Figure out a way to only trigger this if SHIFT and ENTER are pressed at (near) the same time.   
-            //Until this, I have disabled the enter to confirm functionality.
-            /*
-            listenTo(keys);
+            //TODO: Figure out a way to only trigger this if SHIFT and ENTER are pressed at (near) the same time. 
+            listenTo(keys); 
             reactions += 
             {
-                case scala.swing.event.KeyPressed(_, scala.swing.event.Key.Enter, _, _) =>
+                case keypress:scala.swing.event.KeyPressed =>
                 {
-                    txtOutput.text = "";
-                    
-                    var result  = tryTranslate();
-                    if (result != None)
+                    KeyListener.addNewKey(keypress.peer);
+                    var keys  = KeyListener.getKeysPressedInLastSecond();
+                    //For the record, I feel as if this is an awful way to do this but at this point I really don't care.
+                    //Scala needs a better way to listen to multiple key presses at near the same time without delving into linking the java KeyListener class with scala KeyEvents
+                    var bools = Array(false, false);
+                    for (key <- keys)
                     {
-                        txtOutput.text = result.toString();
+                        if (key.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) 
+                            bools(0) = true;
+                        else if (key.getKeyCode() == java.awt.event.KeyEvent.VK_SHIFT)
+                            bools(1) = true;
+                    }
+                    if (!bools.contains(false))
+                    {
+                        txtOutput.text = "";
+                        
+                        var result  = tryTranslate();
+                        if (result != None)
+                        {
+                            txtOutput.text = result.toString();
+                        }
                     }
                 }
             };
-            */
+            
             
         };
         
         private var btnConfirm = new Button("Confirm")
         {
-            this.tooltip = "Translate inputted text.";
+            this.tooltip    = "Translate inputted text.";
             this.reactions += 
             {
                 case scala.swing.event.ButtonClicked(_) =>
@@ -145,8 +159,9 @@ object UI
     
         private var btnCopyToClipboard = new Button("Copy to clipboard")
         {
-            this.tooltip = "Copy output contents to clipboard.";
-            this.reactions +=  {
+            this.tooltip    = "Copy output contents to clipboard.";
+            this.reactions +=  
+            {
                 case scala.swing.event.ButtonClicked(_) =>
                 {
                     try
@@ -157,7 +172,7 @@ object UI
                     {
                         case e:Exception =>
                         {
-                            throw new Exception("Something very bad has occured. Please report this on the github repository. Exception details follow: " + e.getMessage());
+                            throw new Exception("Something very bad has occured while attempting to copy your text and we're not sure what. Please report this on the github repository. Exception details follow: " + e.getMessage());
                         }
                     }
                 }
@@ -194,7 +209,7 @@ object UI
       
             this.contents += new FlowPanel(
                 btnCopyToClipboard  
-            );  
+            );       
             
         };
         

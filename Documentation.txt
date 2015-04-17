@@ -20,7 +20,7 @@ Idiots Guide to Getting Started:
 
 Full Explanation of Features:
     Place text you wish to translate in the 'INPUT' text field.
-    After inputting text you wish to translate, press the 'CONFIRM' button to translate the text.
+    After inputting text you wish to translate, press the 'CONFIRM' button (or press SHIFT+ENTER) to translate the text.
     The newly translated text will appear in the 'OUTPUT' text field.
     Any errors encountered during this translation process will appear at the bottom half of the application and will start with 'ERROR:'.
     Some such errors include:

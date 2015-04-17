@@ -111,12 +111,12 @@ object MorseFunc
                 {
                     if (this.MorseToEnglish.contains(WordsInLine(j)))   
                     {
-                        WordsInLine(j) = this.MorseToEnglish.apply(WordsInLine(j));
+                        WordsInLine(j)  = this.MorseToEnglish.apply(WordsInLine(j));
                     }
                     else
                     {
-                        invalidChars = invalidChars :+ WordsInLine(j);
-                        shouldThrow  = true;
+                        invalidChars    = invalidChars :+ WordsInLine(j);
+                        shouldThrow     = true;
                     }
                 }
                 inLines(i) = GeneralFunc.ArrayStringToString(WordsInLine);
