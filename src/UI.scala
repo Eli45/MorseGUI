@@ -1,4 +1,8 @@
-import scala.swing._, MorseFunc._, UIKeyListener._;
+import scala.swing._, MorseFunc._, UIKeyListener._, ImageAssetGetter._;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.BorderFactory;
+import java.awt.Color;
 
 object UI
 {
@@ -45,6 +49,11 @@ object UI
         
         private val TEXT_FIELD_ROW      = 7;
         private val TEXT_FIELD_COLUMN   = 20;
+        
+        //get heights of our icons
+        private val ASSET_FOLDER = ".\\resources\\art";
+        var imgGetter:ImageAssetGetter = new ImageAssetGetter(new java.io.File(this.ASSET_FOLDER));
+        var imageDimensions = imgGetter.getImageHeights();
 
         private def tryTranslate():Any  =
         {
@@ -63,12 +72,29 @@ object UI
             }
         };
         
+        private def setButtonSize(btn:Button, dim:Dimension) =
+        {
+            btn.minimumSize   = dim;
+            btn.maximumSize   = dim;
+            btn.preferredSize = dim;
+             
+        }
+        
         private var lblSwitch = new Label("Mode: English->Morse");
         
         private var btnSwitch = new Button("Switch translation mode")
-        {
-            this.tooltip = "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
+        {           
+            private val imgName = "SwitchTranslationModeIcon.png"
             
+            private val image   = imageDimensions(imgName);   
+            private val width   = image._1;
+            private val height  = image._2;          
+            private val DIM     = new Dimension(width, height);
+           
+            
+            setButtonSize(this, DIM);
+            this.icon    = new ImageIcon(".\\resources\\art\\" + imgName);
+            this.tooltip = "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
             this.reactions += 
             {
                 case scala.swing.event.ButtonClicked(_) =>
@@ -95,7 +121,6 @@ object UI
         {
             this.editable   = false;
             this.tooltip    = "Translated text appears here.";
-            //this.preferredSize = new Dimension(100, 100);
         };
         
         private var txtInput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
@@ -140,7 +165,17 @@ object UI
         };
         
         private var btnConfirm = new Button("Confirm")
-        {
+        { 
+            private val imgName = "ConfirmIcon.png"
+            
+            private val image   = imageDimensions(imgName);   
+            private val width   = image._1;
+            private val height  = image._2;          
+            private val DIM     = new Dimension(width, height);
+           
+            
+            setButtonSize(this, DIM);
+            this.icon       = new ImageIcon(".\\resources\\art\\" + imgName);
             this.tooltip    = "Translate inputted text.";
             this.reactions += 
             {
@@ -159,6 +194,16 @@ object UI
     
         private var btnCopyToClipboard = new Button("Copy to clipboard")
         {
+            private val imgName = "CopyToClipboardIcon.png"
+            
+            private val image   = imageDimensions(imgName);   
+            private val width   = image._1;
+            private val height  = image._2;
+            private val DIM     = new Dimension(width, height);
+           
+            
+            setButtonSize(this, DIM);
+            this.icon       = new ImageIcon(".\\resources\\art\\" + imgName);
             this.tooltip    = "Copy output contents to clipboard.";
             this.reactions +=  
             {
@@ -211,7 +256,7 @@ object UI
                 btnCopyToClipboard  
             );       
             
-        };
+        }; 
         
     }
     

@@ -1,3 +1,2 @@
-Make pretty???
-I guess that's it?
-I don't know.
+Fix Icon placement inside of buttons since it's screwed right now.
+Might be something to do with the flowpanels.
