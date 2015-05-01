@@ -1,15 +1,15 @@
 object ImageAssetGetter
 {
-	import javax.imageio.ImageIO;
-	import java.awt.image.BufferedImage;
-	import java.io.File;
-	
+    import javax.imageio.ImageIO;
+    import java.awt.image.BufferedImage;
+    import java.io.File;
+    
     class ImageAssetGetter(folder:File)
     {
-    	///CONSTRUCTOR
-        val ASSET_FOLDER 							= folder.getAbsolutePath();
-        val VALID_IMAGE_EXTENSIONS:Array[String] 	= Array(".png", ".jpg", ".gif");
-        private var ImageAssets:Array[File] 		= Array();
+        ///CONSTRUCTOR
+        val ASSET_FOLDER                            = folder.getAbsolutePath();
+        val VALID_IMAGE_EXTENSIONS:Array[String]    = Array(".png", ".jpg", ".gif");
+        private var ImageAssets:Array[File]         = Array();
         
         
         for (file <- folder.listFiles())
@@ -18,7 +18,7 @@ object ImageAssetGetter
             {
                 if (this.VALID_IMAGE_EXTENSIONS.contains(this.getFileExtension(file)))
                 {
-                	ImageAssets = ImageAssets :+ file;
+                    ImageAssets = ImageAssets :+ file;
                 }
             }
         }
@@ -45,7 +45,7 @@ object ImageAssetGetter
             for (image <- this.ImageAssets)
             {
                 val bimg:BufferedImage = ImageIO.read(image);               
-            	val width  = bimg.getWidth();
+                val width  = bimg.getWidth();
                 val height = bimg.getHeight();
                 mapOfImages += (image.getName() -> (width, height))
                 

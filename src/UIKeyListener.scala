@@ -10,17 +10,17 @@ object UIKeyListener
         {
             if (!this.customContains(key.getKeyCode()))
             {
-            	this.keysPressedInLastSecond += (key -> java.lang.System.currentTimeMillis());
+                this.keysPressedInLastSecond += (key -> java.lang.System.currentTimeMillis());
             }
         }
 
         private def customContains(keyCode:Int):Boolean = 
         {
-        	for ((key, value) <- this.keysPressedInLastSecond)
-        	{
-        	    if (key.getKeyCode() == keyCode) return true;
-        	}
-        	return false;  
+            for ((key, value) <- this.keysPressedInLastSecond)
+            {
+                if (key.getKeyCode() == keyCode) return true;
+            }
+            return false;  
         }
         
         private def removeKey(key:java.awt.event.KeyEvent) =

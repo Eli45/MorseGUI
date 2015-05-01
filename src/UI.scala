@@ -103,13 +103,13 @@ object UI
                     
                     if (MorseTranslator.getTranslationMode())  //Mode == English to Morse
                     {
-                    	this.tooltip 	= "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
-                    	lblSwitch.text 	= "Mode: English->Morse";
+                        this.tooltip    = "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
+                        lblSwitch.text  = "Mode: English->Morse";
                     }
                     else
                     {
-                    	this.tooltip 	= "Switch language you wish to translate to and from.\nCurrent mode: Morse->English";
-                    	lblSwitch.text 	= "Mode: Morse->English";
+                        this.tooltip    = "Switch language you wish to translate to and from.\nCurrent mode: Morse->English";
+                        lblSwitch.text  = "Mode: Morse->English";
                     }
                     
                 }
@@ -211,7 +211,7 @@ object UI
                 {
                     try
                     {
-                    	GeneralFunc.copyToClipboard(txtOutput.text);
+                        GeneralFunc.copyToClipboard(txtOutput.text);
                     }
                     catch
                     {
@@ -235,12 +235,12 @@ object UI
             );
             
             this.contents += new FlowPanel(
-            	lblSwitch
+                lblSwitch
             );
             
             this.contents += new FlowPanel(
-            	btnSwitch,
-            	btnConfirm
+                btnSwitch,
+                btnConfirm
             );
             
             this.contents += new FlowPanel(new Label("<HTML><U>OUTPUT</U></HTML>"))
