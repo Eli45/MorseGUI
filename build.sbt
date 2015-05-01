@@ -7,6 +7,6 @@ lazy val commonSettings = Seq(
 lazy val root = (project in file(".")).
   settings(commonSettings: _*).
   settings(
-	name 						:= "MorseGUI",
-	assemblyJarName in assembly := "MorseGUI.jar"
+    name                        := "MorseGUI",
+    assemblyJarName in assembly := "MorseGUI.jar"
   )
