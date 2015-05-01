@@ -59,7 +59,6 @@ object UI
         
         //get heights of our icons
         private val ASSET_FOLDER = ".\\src\\main\\resources\\art";
-        println(new java.io.File(this.ASSET_FOLDER).getName());
         var imgGetter:ImageAssetGetter = new ImageAssetGetter(new java.io.File(this.ASSET_FOLDER));
         var imageDimensions = imgGetter.getImageHeights();
 

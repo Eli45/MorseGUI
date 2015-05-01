@@ -1,1 +1,1 @@
-@java -jar %~dp0runnable\MorseGUI.jar
+@start "" javaw -jar %~dp0runnable\MorseGUI.jar
