@@ -135,15 +135,18 @@ object UI
         {
             this.editable   = false;
             this.tooltip    = "Translated text appears here.";
+            this.lineWrap   = true;
         };
+        
+        private var scrollTxtOutput = new ScrollPane(txtOutput);
         
         private var txtInput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
         {
             this.tooltip    = "What you want to translate.";
             this.enabled    = true;
+            this.lineWrap   = true;
             this.focusable  = true;
             this.requestFocus();
-            
             //TODO: Figure out a way to only trigger this if SHIFT and ENTER are pressed at (near) the same time. 
             listenTo(keys); 
             reactions += 
@@ -174,9 +177,10 @@ object UI
                     }
                 }
             };
-            
-            
+              
         };
+        
+        private var scrollTxtInput = new ScrollPane(txtInput);
         
         private var btnConfirm = new Button()
         { 
@@ -241,7 +245,7 @@ object UI
             
             this.contents += new FlowPanel(new Label("<HTML><U>INPUT</U></HTML>"));
             this.contents += new FlowPanel(
-                txtInput
+                scrollTxtInput
             );
             
             this.contents += new FlowPanel(
@@ -255,7 +259,7 @@ object UI
             
             this.contents += new FlowPanel(new Label("<HTML><U>OUTPUT</U></HTML>"))
             this.contents += new FlowPanel(
-                txtOutput
+                scrollTxtOutput
             );       
             
             this.contents += new FlowPanel(
