@@ -1,1 +1,1 @@
-@scala -cp %~dp0\bin\ MainWindow
+@java -jar %~dp0runnable\MorseGUI.jar
