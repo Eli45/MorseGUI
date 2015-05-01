@@ -80,21 +80,28 @@ object UI
              
         }
         
-        private var lblSwitch = new Label("Mode: English->Morse");
+        private def getImageDimension(imgName:String):Dimension =
+        {
+            val imgDim = this.imageDimensions(imgName);
+            return new Dimension(imgDim._1, imgDim._2);
+        }
         
-        private var btnSwitch = new Button("Switch translation mode")
+        private var lblSwitch = new Label("Mode: English->Morse")
+        {
+            this.tooltip = "Current translation mode.";
+        };
+        
+        private var btnSwitch = new Button()
         {           
-            private val imgName = "SwitchTranslationModeIcon.png"
-            
-            private val image   = imageDimensions(imgName);   
-            private val width   = image._1;
-            private val height  = image._2;          
-            private val DIM     = new Dimension(width, height);
-           
+            private val imgName 		= "SwitchTranslationModeIcon.png";
+            private val imgNamePressed  = "SwitchTranslationModeIcon_PRESSED.png";
+            private val DIM     		= getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon    = new ImageIcon(".\\resources\\art\\" + imgName);
-            this.tooltip = "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
+            this.icon    	 			= new ImageIcon(".\\resources\\art\\" + imgName);
+            this.pressedIcon 			= new ImageIcon(".\\resources\\art\\" + imgNamePressed);
+            this.border  	 			= BorderFactory.createLineBorder(Color.black);
+            this.tooltip 	 			= "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
             this.reactions += 
             {
                 case scala.swing.event.ButtonClicked(_) =>
@@ -164,19 +171,17 @@ object UI
             
         };
         
-        private var btnConfirm = new Button("Confirm")
+        private var btnConfirm = new Button()
         { 
-            private val imgName = "ConfirmIcon.png"
-            
-            private val image   = imageDimensions(imgName);   
-            private val width   = image._1;
-            private val height  = image._2;          
-            private val DIM     = new Dimension(width, height);
-           
+            private val imgName 		= "ConfirmIcon.png";
+            private val imgNamePressed  = "ConfirmIcon_PRESSED.png";
+            private val DIM     		= getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon       = new ImageIcon(".\\resources\\art\\" + imgName);
-            this.tooltip    = "Translate inputted text.";
+            this.icon    	 			= new ImageIcon(".\\resources\\art\\" + imgName);
+            this.pressedIcon 			= new ImageIcon(".\\resources\\art\\" + imgNamePressed);
+            this.border  	 			= BorderFactory.createLineBorder(Color.black);
+            this.tooltip    			= "Translate inputted text.";
             this.reactions += 
             {
                 case scala.swing.event.ButtonClicked(_) =>
@@ -192,19 +197,17 @@ object UI
             };
         };
     
-        private var btnCopyToClipboard = new Button("Copy to clipboard")
+        private var btnCopyToClipboard = new Button()
         {
-            private val imgName = "CopyToClipboardIcon.png"
-            
-            private val image   = imageDimensions(imgName);   
-            private val width   = image._1;
-            private val height  = image._2;
-            private val DIM     = new Dimension(width, height);
-           
+            private val imgName 		= "CopyToClipboardIcon.png";
+            private val imgNamePressed  = "CopyToClipboardIcon_PRESSED.png";
+            private val DIM     		= getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon       = new ImageIcon(".\\resources\\art\\" + imgName);
-            this.tooltip    = "Copy output contents to clipboard.";
+            this.icon    	 			= new ImageIcon(".\\resources\\art\\" + imgName);
+            this.pressedIcon 			= new ImageIcon(".\\resources\\art\\" + imgNamePressed);
+            this.border  	 			= BorderFactory.createLineBorder(Color.black);
+            this.tooltip    			= "Copy output contents to clipboard.";
             this.reactions +=  
             {
                 case scala.swing.event.ButtonClicked(_) =>
