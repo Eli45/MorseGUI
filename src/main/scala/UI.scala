@@ -6,7 +6,6 @@ import ImageAssetGetter._;
 
 import scala.swing._;
 
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.BorderFactory;
 import java.awt.Color;
@@ -60,8 +59,8 @@ object UI
         //get heights of our icons
         private val FILE_SEP     = java.lang.System.getProperty("file.separator");
         private val ASSET_FOLDER = "." + FILE_SEP + "src" + FILE_SEP + "main" + FILE_SEP + "resources" + FILE_SEP + "art";
-        var imgGetter:ImageAssetGetter = new ImageAssetGetter(new java.io.File(this.ASSET_FOLDER));
-        var imageDimensions = imgGetter.getImageHeights();
+        var imgGetter            = new ImageAssetGetter(new java.io.File(this.ASSET_FOLDER));
+        var imageDimensions      = imgGetter.getImageHeights();
 
         private def tryTranslate():Any  =
         {
