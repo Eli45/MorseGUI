@@ -23,11 +23,11 @@ object ImageAssetGetter
                     ImageAssets = ImageAssets :+ file;
                 }
             }
-        }
-    
-        
+        }      
         ///CONSTRUCTOR_END
         
+        //returns everything after the "." which is hopefully the file extension.
+        //if there are two "."s in the filename it will break but for our use of getting our images it should be alright.
         private def getFileExtension(file:File):String =
         {
             var name:String = file.getName();
@@ -39,7 +39,7 @@ object ImageAssetGetter
             return name.substring(finalIndex);
         }
         
-        //returns FileName -> (Width, Height)
+        //returns String FileName -> Tuple[Int, Int](Width, Height)
         def getImageHeights():scala.collection.mutable.Map[String, (Int, Int)] =
         {
             var mapOfImages = scala.collection.mutable.Map[String, (Int, Int)]();

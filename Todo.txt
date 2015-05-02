@@ -1,2 +1,1 @@
-Fix Icon placement inside of buttons since it's screwed right now.
-Might be something to do with the flowpanels.
+Choose a better application iconImage. This one isn't able to be distinguished as to what it even is.

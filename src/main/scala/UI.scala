@@ -58,7 +58,8 @@ object UI
         private val TEXT_FIELD_COLUMN   = 20;
         
         //get heights of our icons
-        private val ASSET_FOLDER = ".\\src\\main\\resources\\art";
+        private val FILE_SEP     = java.lang.System.getProperty("file.separator");
+        private val ASSET_FOLDER = "." + FILE_SEP + "src" + FILE_SEP + "main" + FILE_SEP + "resources" + FILE_SEP + "art";
         var imgGetter:ImageAssetGetter = new ImageAssetGetter(new java.io.File(this.ASSET_FOLDER));
         var imageDimensions = imgGetter.getImageHeights();
 
@@ -105,8 +106,8 @@ object UI
             private val DIM     		= getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon    	 			= new ImageIcon(ASSET_FOLDER + "\\" + imgName);
-            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + "\\" + imgNamePressed);
+            this.icon    	 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
+            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
             this.border  	 			= BorderFactory.createLineBorder(Color.black);
             this.tooltip 	 			= "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
             this.reactions += 
@@ -189,8 +190,8 @@ object UI
             private val DIM     		= getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon    	 			= new ImageIcon(ASSET_FOLDER + "\\" + imgName);
-            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + "\\" + imgNamePressed);
+            this.icon    	 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
+            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
             this.border  	 			= BorderFactory.createLineBorder(Color.black);
             this.tooltip    			= "Translate inputted text.";
             this.reactions += 
@@ -215,8 +216,8 @@ object UI
             private val DIM     		= getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon    	 			= new ImageIcon(ASSET_FOLDER + "\\" + imgName);
-            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + "\\" + imgNamePressed);
+            this.icon    	 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
+            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
             this.border  	 			= BorderFactory.createLineBorder(Color.black);
             this.tooltip    			= "Copy output contents to clipboard.";
             this.reactions +=  
@@ -240,6 +241,17 @@ object UI
             
         this.title         = "Eli Morse Translator";
         this.preferredSize = new Dimension(750, 500);
+        
+        var bufimg:java.awt.image.BufferedImage = null;
+        try
+        {
+            this.iconImage = javax.imageio.ImageIO.read(new java.io.File(ASSET_FOLDER + FILE_SEP + "MorseIcon.png"));
+        } 
+        catch
+        {
+            case e: Exception => {};
+        }
+        
         this.contents      = new BoxPanel(Orientation.Vertical)
         {   
             
