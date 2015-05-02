@@ -100,15 +100,15 @@ object UI
         
         private var btnSwitch = new Button()
         {           
-            private val imgName 		= "SwitchTranslationModeIcon.png";
+            private val imgName         = "SwitchTranslationModeIcon.png";
             private val imgNamePressed  = "SwitchTranslationModeIcon_PRESSED.png";
-            private val DIM     		= getImageDimension(imgName);      
+            private val DIM             = getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon    	 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
-            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
-            this.border  	 			= BorderFactory.createLineBorder(Color.black);
-            this.tooltip 	 			= "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
+            this.icon                   = new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
+            this.pressedIcon            = new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
+            this.border                 = BorderFactory.createLineBorder(Color.black);
+            this.tooltip                = "Switch language you wish to translate to and from.\nCurrent mode: English->Morse";
             this.reactions += 
             {
                 case scala.swing.event.ButtonClicked(_) =>
@@ -184,15 +184,15 @@ object UI
         
         private var btnConfirm = new Button()
         { 
-            private val imgName 		= "ConfirmIcon.png";
+            private val imgName         = "ConfirmIcon.png";
             private val imgNamePressed  = "ConfirmIcon_PRESSED.png";
-            private val DIM     		= getImageDimension(imgName);      
+            private val DIM             = getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon    	 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
-            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
-            this.border  	 			= BorderFactory.createLineBorder(Color.black);
-            this.tooltip    			= "Translate inputted text.";
+            this.icon                   = new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
+            this.pressedIcon            = new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
+            this.border                 = BorderFactory.createLineBorder(Color.black);
+            this.tooltip                = "Translate inputted text.";
             this.reactions += 
             {
                 case scala.swing.event.ButtonClicked(_) =>
@@ -210,15 +210,15 @@ object UI
     
         private var btnCopyToClipboard = new Button()
         {
-            private val imgName 		= "CopyToClipboardIcon.png";
+            private val imgName         = "CopyToClipboardIcon.png";
             private val imgNamePressed  = "CopyToClipboardIcon_PRESSED.png";
-            private val DIM     		= getImageDimension(imgName);      
+            private val DIM             = getImageDimension(imgName);      
             
             setButtonSize(this, DIM);
-            this.icon    	 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
-            this.pressedIcon 			= new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
-            this.border  	 			= BorderFactory.createLineBorder(Color.black);
-            this.tooltip    			= "Copy output contents to clipboard.";
+            this.icon                   = new ImageIcon(ASSET_FOLDER + FILE_SEP + imgName);
+            this.pressedIcon            = new ImageIcon(ASSET_FOLDER + FILE_SEP + imgNamePressed);
+            this.border                 = BorderFactory.createLineBorder(Color.black);
+            this.tooltip                = "Copy output contents to clipboard.";
             this.reactions +=  
             {
                 case scala.swing.event.ButtonClicked(_) =>
