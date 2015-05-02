@@ -9,5 +9,5 @@ To download with the source code simply clone this repository.
 Otherwise follow [this](https://db.tt/gHEgmanz) link.
 
 # Usage
-  * Running MorseGUI.bat will start the program.
-  * A full list of documented features can be read in Documentation.txt.
+   * Running MorseGUI.bat will start the program.
+   * A full list of documented features can be read in Documentation.txt.
