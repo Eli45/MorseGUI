@@ -77,7 +77,7 @@ object GeneralFunc
     def copyToClipboard(string:String)  
     {   
         val clipboard = java.awt.Toolkit.getDefaultToolkit().getSystemClipboard();
-        var selection = new java.awt.datatransfer.StringSelection(string);
+        val selection = new java.awt.datatransfer.StringSelection(string);
         clipboard.setContents(selection, selection);
     }
 

@@ -45,8 +45,8 @@ object MorseFunc
     
         private def transPhraseToMorse(phrase:String):String =
         {
-            var inPhrase    :String             = phrase;
-            var inWords     :List[String]       = phrase.replace(MorseLanguageDetails.newLine, "\n").split(' ').toList;
+            val inPhrase    :String             = phrase;
+            val inWords     :List[String]       = phrase.replace(MorseLanguageDetails.newLine, "\n").split(' ').toList;
             var outWords    :String             = "";
             
             var invalidChars:Array[String]      = Array();
@@ -55,7 +55,7 @@ object MorseFunc
       
             for (i <- 0 to inWords.length - 1)
             {
-                var charStrings:Array[String] = GeneralFunc.CharArrayToStringArray(inWords(i).toCharArray());
+                val charStrings:Array[String] = GeneralFunc.CharArrayToStringArray(inWords(i).toCharArray());
                 
                 
                 //Loop scans each letter in the word.
@@ -102,8 +102,8 @@ object MorseFunc
         
         private def transPhraseToEnglish(phrase:String):String =
         {
-            var inPhrase                    = phrase;
-            var inLines                     = phrase.replace(MorseLanguageDetails.newLine, "\n").split("\n").map(_.trim());
+            val inPhrase                    = phrase;
+            val inLines                     = phrase.replace(MorseLanguageDetails.newLine, "\n").split("\n").map(_.trim());
       
             var invalidChars:Array[String]  = Array();
             var shouldThrow :Boolean        = false;
@@ -111,7 +111,7 @@ object MorseFunc
             //Go through each letter and replace it with the correct Morse equivalent.
             for (i <- 0 to inLines.length - 1)
             {
-                var WordsInLine = inLines(i).split(' ');
+                val WordsInLine = inLines(i).split(' ');
                 for (j <- 0 to WordsInLine.length - 1)
                 {
                     if (this.MorseToEnglish.contains(WordsInLine(j)))   

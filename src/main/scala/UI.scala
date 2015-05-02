@@ -48,10 +48,10 @@ object UI
     class CustomUI()
     extends MainFrame
     {   
-        private var MorseTranslator     = new MorseReader();
-        private var KeyListener         = new CustomKeyListener();
+        private val MorseTranslator     = new MorseReader();
+        private val KeyListener         = new CustomKeyListener();
 
-        private var lblError            = new Label("");
+        private val lblError            = new Label("");
         
         private val TEXT_FIELD_ROW      = 7;
         private val TEXT_FIELD_COLUMN   = 20;
@@ -93,12 +93,12 @@ object UI
             return new Dimension(imgDim._1, imgDim._2);
         }
         
-        private var lblSwitch = new Label("Mode: English->Morse")
+        private val lblSwitch = new Label("Mode: English->Morse")
         {
             this.tooltip = "Current translation mode.";
         };
         
-        private var btnSwitch = new Button()
+        private val btnSwitch = new Button()
         {           
             private val imgName         = "SwitchTranslationModeIcon.png";
             private val imgNamePressed  = "SwitchTranslationModeIcon_PRESSED.png";
@@ -131,16 +131,16 @@ object UI
 
         };
         
-        private var txtOutput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
+        private val txtOutput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
         {
             this.editable   = false;
             this.tooltip    = "Translated text appears here.";
             this.lineWrap   = true;
         };
         
-        private var scrollTxtOutput = new ScrollPane(txtOutput);
+        private val scrollTxtOutput = new ScrollPane(txtOutput);
         
-        private var txtInput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
+        private val txtInput = new TextArea("", TEXT_FIELD_ROW, TEXT_FIELD_COLUMN)
         {
             this.tooltip    = "What you want to translate.";
             this.enabled    = true;
@@ -154,10 +154,10 @@ object UI
                 case keypress:scala.swing.event.KeyPressed =>
                 {
                     KeyListener.addNewKey(keypress.peer);
-                    var keys  = KeyListener.getKeysPressedInLastSecond();
+                    val keys  = KeyListener.getKeysPressedInLastSecond();
                     //For the record, I feel as if this is an awful way to do this but at this point I really don't care.
                     //Scala needs a better way to listen to multiple key presses at near the same time without delving into linking the java KeyListener class with scala KeyEvents
-                    var bools = Array(false, false);
+                    val bools = Array(false, false);
                     for (key <- keys)
                     {
                         if (key.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) 
@@ -169,7 +169,7 @@ object UI
                     {
                         txtOutput.text = "";
                         
-                        var result  = tryTranslate();
+                        val result  = tryTranslate();
                         if (result != None)
                         {
                             txtOutput.text = result.toString();
@@ -180,9 +180,9 @@ object UI
               
         };
         
-        private var scrollTxtInput = new ScrollPane(txtInput);
+        private val scrollTxtInput = new ScrollPane(txtInput);
         
-        private var btnConfirm = new Button()
+        private val btnConfirm = new Button()
         { 
             private val imgName         = "ConfirmIcon.png";
             private val imgNamePressed  = "ConfirmIcon_PRESSED.png";
@@ -199,7 +199,7 @@ object UI
                 {
                     txtOutput.text = "";
                     
-                    var result  = tryTranslate();
+                    val result  = tryTranslate();
                     if (result != None)
                     {
                         txtOutput.text = result.toString();
@@ -208,7 +208,7 @@ object UI
             };
         };
     
-        private var btnCopyToClipboard = new Button()
+        private val btnCopyToClipboard = new Button()
         {
             private val imgName         = "CopyToClipboardIcon.png";
             private val imgNamePressed  = "CopyToClipboardIcon_PRESSED.png";

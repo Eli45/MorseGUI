@@ -38,7 +38,7 @@ object program
         }
         else
         {
-            var myUI = new MainWindow(new CustomUI());
+            val myUI = new MainWindow(new CustomUI());
             myUI.top.visible = true;
         }
     }

@@ -2,7 +2,8 @@
 A local morse translation program designed on Scala.
 
 # Requirements
-[Java Runtime Environment 7 or greater](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)
+[Java Runtime Environment 8 to run](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)
+[Scala 2.11.X (preferably 2.11.6) to compile](http://www.scala-lang.org/download/)
 
 # Download
 To download with the source code simply clone this repository.

@@ -30,8 +30,8 @@ object ImageAssetGetter
         //if there are two "."s in the filename it will break but for our use of getting our images it should be alright.
         private def getFileExtension(file:File):String =
         {
-            var name:String = file.getName();
-            var finalIndex  = name.lastIndexOf(".");
+            val name:String = file.getName();
+            val finalIndex  = name.lastIndexOf(".");
             
             if (finalIndex == -1) 
                 return "";

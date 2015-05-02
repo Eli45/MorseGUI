@@ -18,21 +18,21 @@ object CommandLineTranslator
     
     def transMtoE() =
     {
-        var mr = new MorseFunc.MorseReader();
+        val mr = new MorseFunc.MorseReader();
         println("Enter phrase to translate.");
         println(mr.translate(readLine(), "--mte"));
     }
     
     def transEtoM() =
     {
-        var mr = new MorseFunc.MorseReader();
+        val mr = new MorseFunc.MorseReader();
         println("Enter phrase to translate.");
         println(mr.translate(readLine(), "--etm"));
     }
     
     def getTranslateType() =
     {
-        var in = readLine("1: Translate to Morse\n2: Translate to English");
+        val in = readLine("1: Translate to Morse\n2: Translate to English");
         in match
         {
             case "1" => 
@@ -54,7 +54,6 @@ object CommandLineTranslator
     
     def ListenToInputs() = 
     {
-        var cont = true;
         val commands:Array[String] = Array(
             "none",
             "help",
@@ -67,9 +66,9 @@ object CommandLineTranslator
         );
         
         printCommands();
-        while (cont)
+        while (true)
         {
-            var input = readLine().toLowerCase().trim();
+            val input = readLine().toLowerCase().trim();
             
             if (commands.contains(input))
             {
@@ -87,7 +86,7 @@ object CommandLineTranslator
             else if (input.split(' ')(0).equals("help"))    //edge case if user inputs "help command"
             {
                 if (input.split(' ').length < 2) throw new IllegalArgumentException("'help command' parameters incorrectly initiated.");
-                var cmd = input.split(' ')(1);
+                val cmd = input.split(' ')(1);
                 
                 cmd match
                 {
