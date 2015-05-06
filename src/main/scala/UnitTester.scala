@@ -37,11 +37,11 @@ object UnitTester
                     output = "PASSED: " + output;
                 else
                 {
-                    import scala.reflect.runtime.universe._
-                    println(
-                        Literal(Constant(VAL_OUT)).toString + "\n",
-                        Literal(Constant(output)).toString
-                    )
+                    //import scala.reflect.runtime.universe._
+                    //println(
+                    //    Literal(Constant(VAL_OUT)).toString + "\n",
+                    //    Literal(Constant(output)).toString
+                    //)
                     output = "FAILED: " + output;
                 }
                 

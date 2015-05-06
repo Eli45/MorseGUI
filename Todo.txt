@@ -1,1 +1,2 @@
-Choose a better application iconImage. This one isn't able to be distinguished as to what it even is.
+Fix multiline english to morse unit test.
+add UNIX system .sh startup script

@@ -12,10 +12,14 @@
                                                                                        
 
 Idiots Guide to Getting Started:
-    1) Put text in the 'INPUT' text field located in the upper half of the application.
-    2) Press the 'CONFIRM' button.
-    3) View pretty contents in 'OUTPUT' text field located in the lower half of the application.
-    4) View the 'Full Explanation of Features' section for a better explanation of all possible features.
+    1) Make sure you have Java Runtime Environment 6 or greater installed.
+        If you don't you can download it at: https://www.java.com/en/
+    2A) If you are running Windows: start MorseGUI.bat
+    2B) If you are running MacOS or Linux: start MorseGUI.sh
+    3) Put text in the 'INPUT' text field located in the upper half of the application.
+    4) Press the 'CONFIRM' button.
+    5) View pretty contents in 'OUTPUT' text field located in the lower half of the application.
+    6) View the 'Full Explanation of Features' section for a better explanation of all possible features.
 
 
 Full Explanation of Features:
@@ -35,3 +39,8 @@ Full Explanation of Features:
         Providing the program with the command line args '--cmd' will start the program in CLI form, no GUI will be launched.
         Do note that the CLI interface is not checked for exceptions meaning that if an IllegalArgumentException is thrown
         due to invalid characters, your program will crash and burn.
+        Only use this if you have a very good reason to.
+
+        Providing the program with the command line args '--test' will start the program in unit testing mode. This will produce a file
+        'unit_tests.log' which will contains information pertaining testing if the program is correctly generating output. There should
+        be no reason for you to use this unless you are working on this project. 
