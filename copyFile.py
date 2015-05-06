@@ -16,7 +16,7 @@ def main(argv):
     print("Attempting to copy provided file.")
     try:
         shutil.copyfile(file_to_copy, os.path.dirname(os.path.realpath(__file__)) + os.path.sep + "runnable" + os.path.sep + "MorseGUI.jar")
-        print("File copied successfully")
+        print("File copied successfully.")
     except IOError:
         print("Error occured in copying of file. Check command line arguments.")
 
