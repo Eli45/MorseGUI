@@ -68,7 +68,7 @@ object GeneralFunc
         for (i <- 0 to stringArr.length - 1)
         {
             if (i != stringArr.length - 1)
-            	RET += stringArr(i) + "\n";
+                RET += stringArr(i) + "\n";
             else
                 RET += stringArr(i);
         }

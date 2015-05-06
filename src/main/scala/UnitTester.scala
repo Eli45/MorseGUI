@@ -20,7 +20,7 @@ object UnitTester
             
             for ((key, value) <- m)
             {
-            	val KEY_IN  = key.trim().stripMargin;
+                val KEY_IN  = key.trim().stripMargin;
                 val VAL_OUT = value.trim().stripMargin;
                 var output:String = "";
                 
@@ -30,7 +30,7 @@ object UnitTester
                 {
                     try
                     {
-                    	output = mr.translate(KEY_IN, mode);
+                        output = mr.translate(KEY_IN, mode);
                     }
                     catch
                     {
@@ -39,13 +39,13 @@ object UnitTester
                 }            
                 
                 if (VAL_OUT.toLowerCase().equals(output.toLowerCase()))
-                	output = "PASSED: " + output;
+                    output = "PASSED: " + output;
                 else
                 {
                     import scala.reflect.runtime.universe._
                     println(
-                    	Literal(Constant(VAL_OUT)).toString + "\n",
-                    	Literal(Constant(output)).toString
+                        Literal(Constant(VAL_OUT)).toString + "\n",
+                        Literal(Constant(output)).toString
                     )
                     output = "FAILED: " + output;
                 }
@@ -60,36 +60,36 @@ object UnitTester
         {
             //This is so ugly I'm actually crying.
             var unitTestsEnglishToMorse = Map(
-			    "rekt-9" 				-> ".-. . -.- - -....- ----.",	    
-			    "*(#mcx 3)Ps; ;." 		-> "ERROR: Unknown symbols:[* #]",    
-			    "hey_haha@gmail.com" 	-> "ERROR: Unknown symbols:[@]",   
-			    "this worked right?" 	-> "- .... .. ... / .-- --- .-. -.- . -.. / .-. .. --. .... - ..--..",
-			    "Eli Furland" 			-> ". .-.. .. / ..-. ..- .-. .-.. .- -. -..",
-			    
-			    """Multiple Lines Should Work!
-			    |Right?
-			    |They Do Right?
-			    """ 
-			    ->
-			    """-- ..- .-.. - .. .--. .-.. . / .-.. .. -. . ... / ... .... --- ..- .-.. -.. / .-- --- .-. -.- ---.
-				|.-. .. --. .... - ..--..
-				|- .... . -.-- / -.. --- / .-. .. --. .... - ..--..
-				"""
+                "rekt-9"                -> ".-. . -.- - -....- ----.",      
+                "*(#mcx 3)Ps; ;."       -> "ERROR: Unknown symbols:[* #]",    
+                "hey_haha@gmail.com"    -> "ERROR: Unknown symbols:[@]",   
+                "this worked right?"    -> "- .... .. ... / .-- --- .-. -.- . -.. / .-. .. --. .... - ..--..",
+                "Eli Furland"           -> ". .-.. .. / ..-. ..- .-. .-.. .- -. -..",
+                
+                """Multiple Lines Should Work!
+                |Right?
+                |They Do Right?
+                """ 
+                ->
+                """-- ..- .-.. - .. .--. .-.. . / .-.. .. -. . ... / ... .... --- ..- .-.. -.. / .-- --- .-. -.- ---.
+                |.-. .. --. .... - ..--..
+                |- .... . -.-- / -.. --- / .-. .. --. .... - ..--..
+                """
             );
             
             var unitTestsMorseToEnglish = Map(
-			    
-			    "-- --- .-. ... . / - --- / . -. --. .-.. .. ... .... / .. ... / .- .-.. ... --- / --. --- --- -.." -> "MORSE TO ENGLISH IS ALSO GOOD",
-			    "asdfasdfasdf blah" -> "ERROR: Unknown symbols:[asdfasdfasdf blah]",
-			    
-			    """-- ..- .-.. - .. .-.. .. -. . ...
-			    .- .-. .
-			    -.-. --- --- .-.."""
-			    ->
-			    """MULTILINES
-			    |ARE
-			    |COOL
-			    """
+                
+                "-- --- .-. ... . / - --- / . -. --. .-.. .. ... .... / .. ... / .- .-.. ... --- / --. --- --- -.." -> "MORSE TO ENGLISH IS ALSO GOOD",
+                "asdfasdfasdf blah" -> "ERROR: Unknown symbols:[asdfasdfasdf blah]",
+                
+                """-- ..- .-.. - .. .-.. .. -. . ...
+                .- .-. .
+                -.-. --- --- .-.."""
+                ->
+                """MULTILINES
+                |ARE
+                |COOL
+                """
             );
            
             val outputMorse   = this.testMap(unitTestsEnglishToMorse, true);
@@ -107,7 +107,7 @@ object UnitTester
             }
             catch
             {
-            	case e:Exception => { /*Something went wrong */ };
+                case e:Exception => { /*Something went wrong */ };
             }
             finally
             {

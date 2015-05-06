@@ -61,7 +61,7 @@ object MorseFunc
                 //Loop scans each letter in the word.
                 for(j <- 0 to charStrings.length - 1)
                 {
-                	
+                    
                     if (this.EnglishToMorse.contains(charStrings(j).toString().toUpperCase()))  
                     {
                         charStrings(j) = this.EnglishToMorse.apply(charStrings(j).toUpperCase());
@@ -79,7 +79,7 @@ object MorseFunc
                     else    
                     {
                         outWords += charStrings(j);
-                    }	
+                    }   
                 }
                 
                 // Check to make sure we are not at the last word and adds a / to prepare for the next word if we aren't.
