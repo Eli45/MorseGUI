@@ -56,11 +56,12 @@ object MorseFunc
             for (i <- 0 to inWords.length - 1)
             {
                 val charStrings:Array[String] = GeneralFunc.CharArrayToStringArray(inWords(i).toCharArray());
-                
+                var newArray   :Array[String] = charStrings;
                 
                 //Loop scans each letter in the word.
                 for(j <- 0 to charStrings.length - 1)
                 {
+                	
                     if (this.EnglishToMorse.contains(charStrings(j).toString().toUpperCase()))  
                     {
                         charStrings(j) = this.EnglishToMorse.apply(charStrings(j).toUpperCase());
@@ -70,7 +71,6 @@ object MorseFunc
                         invalidChars = invalidChars :+ charStrings(j);
                         shouldThrow  = true;
                     }
-                    
                     //Check if a letter follows, in which case there should be a space appended to prepare for it.
                     if (j != charStrings.length - 1 && !MorseLanguageDetails.newLines.contains(charStrings(j))) 
                     {
@@ -79,24 +79,21 @@ object MorseFunc
                     else    
                     {
                         outWords += charStrings(j);
-                    }
+                    }	
                 }
                 
                 // Check to make sure we are not at the last word and adds a / to prepare for the next word if we aren't.
                 // / denotes a space in between two words in the Morse language (when written).
-                if (i != inWords.length - 1)    
-                {
+                if (i != inWords.length - 1)
                     outWords += " / ";
-                }
                 
             }
             
             if (!shouldThrow)
-            {
                 return outWords;
-            }
+
             
-            throw new IllegalArgumentException("ERROR: Unknown symbols[" + GeneralFunc.ArrayStringToString(invalidChars, true) + "]");
+            throw new IllegalArgumentException("ERROR: Unknown symbols:[" + GeneralFunc.ArrayStringToString(invalidChars, true) + "]");
       
         }
         
@@ -128,21 +125,18 @@ object MorseFunc
             }
             
             if (!shouldThrow)
-            {
                 return GeneralFunc.ArrayStringToStringInterpolateNewLines(inLines.map(_.trim()));
-            }
+
       
-            throw new IllegalArgumentException("ERROR: Unknown symbols[" + GeneralFunc.ArrayStringToString(invalidChars, true) + "]");
+            throw new IllegalArgumentException("ERROR: Unknown symbols:[" + GeneralFunc.ArrayStringToString(invalidChars, true) + "]");
       
         }
         
         def translate(s: String):String =
         {       
             if (this.TransToMorse)
-            {
                 return this.transPhraseToMorse(s);
-            }
-            
+
             return this.transPhraseToEnglish(s);
 
         }

@@ -1,5 +1,8 @@
 package main.scala;
 
+/**
+    An object containing general methods which are used throughout all files to do general text and array manipulation.
+*/
 object GeneralFunc
 {
     /**
@@ -54,7 +57,7 @@ object GeneralFunc
     /**
      * USE:
         * Function serves the same purpose as ArrayStringToString except we use this on Morse->English.
-        * Because of we remove the \n's after each line when the line gets trimmed.
+        * Because we remove the \n's after each line when the line gets trimmed we must re-add them after we translate.
      * RETURNS:
         * A string with each array element interpolated with newlines after each element.
      */
@@ -64,7 +67,10 @@ object GeneralFunc
         
         for (i <- 0 to stringArr.length - 1)
         {
-            RET += stringArr(i) + "\n";
+            if (i != stringArr.length - 1)
+            	RET += stringArr(i) + "\n";
+            else
+                RET += stringArr(i);
         }
         
         return RET;

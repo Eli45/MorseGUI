@@ -2,7 +2,7 @@
 ENGLISH TO MORSE:
     rekt-9                                  ->      .-. . -.- - -....- ----.
     
-    *(#mcx 3)Ps; ;.                         ->      ERROR: Unknown symbols:[* # ; ;]
+    *(#mcx 3)Ps; ;.                         ->      ERROR: Unknown symbols:[* #]
     
     hey_haha@gmail.com                      ->      ERROR: Unknown symbols:[@]
     
@@ -24,4 +24,4 @@ MORSE TO ENGLISH:
     .- .-. .                                ->      ARE
     -.-. --- --- .-..                               COOL
     
-    asdfasdfasfd blah                       ->      ERROR: Unknown symbols[asdfasdfasdf blah]
+    asdfasdfasfd blah                       ->      ERROR: Unknown symbols:[asdfasdfasdf blah]

@@ -1,5 +1,8 @@
 package main.scala;
 
+/**
+    An object containing two maps which contain character translations to and from Morse.
+*/
 object MorseLanguageDetails
 {
     

@@ -1,4 +1,8 @@
-//TODO: add error checking to translations.
+/**                                         NOTE
+    The command line option included with this program was only used to test the program in it's early phasees.
+    There is no exception checking and will CRASH if you do something incorrectly.
+    Do not use this mode unless you know what you're doing. You will only be frusturated.
+*/
 package main.scala;
 
 import MorseFunc._;

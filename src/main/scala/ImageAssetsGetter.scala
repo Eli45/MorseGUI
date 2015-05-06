@@ -6,6 +6,17 @@ import javax.imageio.ImageIO;
 
 object ImageAssetGetter
 {
+    /**
+     * ImageAssetGetter which will return all image files and their dimensions in a given folder.
+     * METHODS:
+        * getImageHeights:
+            * USE:
+                * Used to get a map of images and their respective dimensions.
+            * RETURNS:
+                * A mutable map containing multiple string -> Tuple[Int, Int] pairs.
+                * String denotes image name
+                * Tuple format is (width, height).
+     */
     class ImageAssetGetter(folder:File)
     {
         ///CONSTRUCTOR

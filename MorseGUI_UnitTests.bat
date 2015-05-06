@@ -1,0 +1,1 @@
+@javaw -jar %~dp0runnable\MorseGUI.jar --test

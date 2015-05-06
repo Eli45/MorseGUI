@@ -31,9 +31,15 @@ object program
                 import CommandLineTranslator._;
                 ListenToInputs();
             }
+            else if (args(0).equals("--test"))
+            {
+                import UnitTester._;
+                val ut = new UnitTester();
+                ut.test();
+            }
             else
             {
-                throw new IllegalArgumentException(args(0) + " is not a recognized command line argument. Try '--cmd'");
+                throw new IllegalArgumentException(args(0) + " is not a recognized command line argument. Try '--cmd' or --test");
             }
         }
         else

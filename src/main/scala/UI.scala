@@ -11,28 +11,7 @@ import javax.swing.BorderFactory;
 import java.awt.Color;
 
 object UI
-{
-    //Original attempt at creating a generic UI which you could add whatever components you wished to via an array.
-    //Decided to scrap it for a custom class due to the hard to read syntax when giving component parameters.
-    class UI(Title:String, Contents:Array[scala.swing.Component]) 
-    extends MainFrame
-    {
-        this.title = Title;
-        
-        this.contents = new BoxPanel(Orientation.Vertical)
-        {
-            Contents.foreach
-            {
-                contents += _;
-            }
-        }
-        
-        this.contents.foreach
-        {
-            listenTo(_);
-        }
-    }
-    
+{   
     /**
      * USE:
         * CustomUI class which will contain all GUI elements and reactions for our main frame.
@@ -44,6 +23,17 @@ object UI
                     * If there is a failure it returns None and changes lblError to inform the user.
                 * RETURNS:
                     * Either correctly translated text as a String or None to signify an error.
+                    
+            * setButtonSize
+                * USE:
+                    * Forces the specified button to a specified dimension.
+
+            * getImageDimension
+                * USE:
+                    * Attempts to return a new Dimension object of the specified image in the ./resources/arts folder.
+                * RETURNS:
+                    * Returns a new Dimension object containing the width and height of the given image.
+                    * Returns Dimension(0, 0) if the image does not exist. 
      */
     class CustomUI()
     extends MainFrame
@@ -89,8 +79,15 @@ object UI
         
         private def getImageDimension(imgName:String):Dimension =
         {
-            val imgDim = this.imageDimensions(imgName);
-            return new Dimension(imgDim._1, imgDim._2);
+            try
+            {
+                val imgDim = this.imageDimensions(imgName);
+                return new Dimension(imgDim._1, imgDim._2);
+            }
+            catch
+            {
+                case e:Exception => return new Dimension(0, 0);
+            }
         }
         
         private val lblSwitch = new Label("Mode: English->Morse")
@@ -241,7 +238,7 @@ object UI
         this.title         = "Eli Morse Translator";
         this.preferredSize = new Dimension(750, 500);
         
-        var bufimg:java.awt.image.BufferedImage = null;
+        private var bufimg:java.awt.image.BufferedImage = null;
         try
         {
             this.iconImage = javax.imageio.ImageIO.read(new java.io.File(ASSET_FOLDER + FILE_SEP + "MorseIcon.png"));
