@@ -23,21 +23,16 @@ object UnitTester
                 val KEY_IN  = key.trim().stripMargin;
                 val VAL_OUT = value.trim().stripMargin;
                 var output:String = "";
-                
-                if (KEY_IN.equals("SWITCH_MORSE_MODE")) 
-                    mr.switchTranslationMode();
-                else
+
+                try
                 {
-                    try
-                    {
-                        output = mr.translate(KEY_IN, mode);
-                    }
-                    catch
-                    {
-                        case e:Exception => { output = e.getMessage() };
-                    }
-                }            
-                
+                    output = mr.translate(KEY_IN, mode);
+                }
+                catch
+                {
+                    case e:Exception => { output = e.getMessage() };
+                }         
+            
                 if (VAL_OUT.toLowerCase().equals(output.toLowerCase()))
                     output = "PASSED: " + output;
                 else
