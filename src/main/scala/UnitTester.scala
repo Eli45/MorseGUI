@@ -17,6 +17,9 @@ object UnitTester
                 mode = "--etm"
             else
                 mode = "--mte"
+
+            var failed:Boolean = false;
+            var failed_num:Int = 0;
             
             for ((key, value) <- m)
             {
@@ -34,20 +37,26 @@ object UnitTester
                 }         
             
                 if (VAL_OUT.toLowerCase().equals(output.toLowerCase()))
-                    output = "PASSED: " + output;
+                    output = "PASSED: \n\t" + KEY_IN.toString() + " -> " + output;
                 else
                 {
-                    //import scala.reflect.runtime.universe._
-                    //println(
-                    //    Literal(Constant(VAL_OUT)).toString + "\n",
-                    //    Literal(Constant(output)).toString
-                    //)
-                    output = "FAILED: " + output;
+                    output = "FAILED: \n\t" + KEY_IN.toString() + " -> " + output;
+                    failed = true;
+                    failed_num += 1;
                 }
                 
                 RESULTS += output + "\n\n"
             }
             
+            if (failed)
+            {
+                RESULTS = "Failed " + failed_num.toString() + " tests.\n" + RESULTS;
+            }
+            else
+            {
+                RESULTS = "Passed all tests.\n" + RESULTS;
+            }
+
             return RESULTS;
         }
         
@@ -66,9 +75,9 @@ object UnitTester
                 |They Do Right?
                 """ 
                 ->
-                """-- ..- .-.. - .. .--. .-.. . / .-.. .. -. . ... / ... .... --- ..- .-.. -.. / .-- --- .-. -.- ---.
-                |.-. .. --. .... - ..--..
-                |- .... . -.-- / -.. --- / .-. .. --. .... - ..--..
+                """-- ..- .-.. - .. .--. .-.. . / .-.. .. -. . ... / ... .... --- ..- .-.. -.. / .-- --- .-. -.- ---. 
+                |.-. .. --. .... - ..--.. 
+                |- .... . -.-- / -.. --- / .-. .. --. .... - ..--.. 
                 """
             );
             
@@ -78,8 +87,8 @@ object UnitTester
                 "asdfasdfasdf blah" -> "ERROR: Unknown symbols:[asdfasdfasdf blah]",
                 
                 """-- ..- .-.. - .. .-.. .. -. . ...
-                .- .-. .
-                -.-. --- --- .-.."""
+                |.- .-. .
+                |-.-. --- --- .-.."""
                 ->
                 """MULTILINES
                 |ARE

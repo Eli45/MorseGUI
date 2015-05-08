@@ -1,0 +1,47 @@
+  _    _  _____ ______ _____                                                           
+ | |  | |/ ____|  ____|  __ \                                                          
+ | |  | | (___ | |__  | |__) |                                                         
+ | |  | |\___ \|  __| |  _  /                                                          
+ | |__| |____) | |____| | \ \                                                          
+  \____/|_____/|______|_|  \_\__  __ ______ _   _ _______    _______ _____ ____  _   _ 
+ |  __ \ / __ \ / ____| |  | |  \/  |  ____| \ | |__   __|/\|__   __|_   _/ __ \| \ | |
+ | |  | | |  | | |    | |  | | \  / | |__  |  \| |  | |  /  \  | |    | || |  | |  \| |
+ | |  | | |  | | |    | |  | | |\/| |  __| | . ` |  | | / /\ \ | |    | || |  | | . ` |
+ | |__| | |__| | |____| |__| | |  | | |____| |\  |  | |/ ____ \| |   _| || |__| | |\  |
+ |_____/ \____/ \_____|\____/|_|  |_|______|_| \_|  |_/_/    \_\_|  |_____\____/|_| \_|
+                                                                                       
+A more complete version of this document in the docx format can be viewed in the file Documentation.docx
+
+Idiots Guide to Getting Started:
+    1) Make sure you have Java Runtime Environment 6 or greater installed.
+        If you don't you can download it at: https://www.java.com/en/
+    2A) If you are running Windows: start MorseGUI.bat
+    2B) If you are running MacOS or Linux: start MorseGUI.sh
+    3) Put text in the 'INPUT' text field located in the upper half of the application.
+    4) Press the 'CONFIRM' button.
+    5) View pretty contents in 'OUTPUT' text field located in the lower half of the application.
+    6) View the 'Full Explanation of Features' section for a better explanation of all possible features.
+
+
+Full Explanation of Features:
+    Place text you wish to translate in the 'INPUT' text field.
+    After inputting text you wish to translate, press the 'CONFIRM' button (or press SHIFT+ENTER) to translate the text.
+    The newly translated text will appear in the 'OUTPUT' text field.
+    Any errors encountered during this translation process will appear at the bottom half of the application and will start with 'ERROR:'.
+    Some such errors include:
+        Entering unsupported characters into the 'INPUT' field (see SupportedCharacters.txt)
+
+    Pressing the 'SWITCH TRANSLATION MODE' button will switch from translation English->Morse to Morse->English and vice versa.
+    Pressing the 'COPY TO CLIPBOARD' button will copy any contents in Output to your clipboard for easy copy pasting.
+
+    Exiting the program follows your standard operating system procedures eg: pressing the exit button in the top right on a Windows machine.
+
+    ADVANCED:
+        Providing the program with the command line args '--cmd' will start the program in CLI form, no GUI will be launched.
+        Do note that the CLI interface is not checked for exceptions meaning that if an IllegalArgumentException is thrown
+        due to invalid characters, your program will crash and burn.
+        Only use this if you have a very good reason to.
+
+        Providing the program with the command line args '--test' will start the program in unit testing mode. This will produce a file
+        'unit_tests.log' which will contains information pertaining testing if the program is correctly generating output. There should
+        be no reason for you to use this unless you are working on this project. 

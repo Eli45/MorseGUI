@@ -37,8 +37,7 @@ object ImageAssetGetter
         }      
         ///CONSTRUCTOR_END
         
-        //returns everything after the "." which is hopefully the file extension.
-        //if there are two "."s in the filename it will break but for our use of getting our images it should be alright.
+        //Returns the file extension including the ".".
         private def getFileExtension(file:File):String =
         {
             val name:String = file.getName();

@@ -2,7 +2,6 @@ package main.scala;
 
 import scala.swing._;
 import UI._;
-import CommandLineTranslator._;
 import MorseFunc._;
 
 //class MainWindow(ui:UI) extends SimpleSwingApplication

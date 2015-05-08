@@ -235,10 +235,9 @@ object UI
             }
         };
             
-        this.title         = "Eli Morse Translator";
+        this.title         = "MorseGUI";
         this.preferredSize = new Dimension(750, 500);
         
-        private var bufimg:java.awt.image.BufferedImage = null;
         try
         {
             this.iconImage = javax.imageio.ImageIO.read(new java.io.File(ASSET_FOLDER + FILE_SEP + "MorseIcon.png"));
