@@ -144,7 +144,7 @@ object UI
             this.lineWrap   = true;
             this.focusable  = true;
             this.requestFocus();
-            //TODO: Figure out a way to only trigger this if SHIFT and ENTER are pressed at (near) the same time. 
+			
             listenTo(keys); 
             reactions += 
             {
@@ -152,8 +152,8 @@ object UI
                 {
                     KeyListener.addNewKey(keypress.peer);
                     val keys  = KeyListener.getKeysPressedInLastSecond();
-                    //For the record, I feel as if this is an awful way to do this but at this point I really don't care.
-                    //Scala needs a better way to listen to multiple key presses at near the same time without delving into linking the java KeyListener class with scala KeyEvents
+                    //This bool array represents that the SHIFT and ENTER key are pressed.
+					//If both are true then both keys are pressed.
                     val bools = Array(false, false);
                     for (key <- keys)
                     {
