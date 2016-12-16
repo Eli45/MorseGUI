@@ -11,7 +11,7 @@ A local morse translation program designed on Scala.
 # Download
 To download with the source code simply clone this repository.
 
-Otherwise follow [this](https://db.tt/gHEgmanz) link.
+Otherwise follow [this](https://dl.dropboxusercontent.com/u/68698294/MorseGUIDownload/MorseGUI.rar) link.
 
 # Usage
 * Running MorseGUI.bat will start the program.
